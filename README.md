@@ -42,16 +42,16 @@ We follow a **system-first approach**. Instead of learning languages, you learn 
 
 ```text
 .
-├── core/               # Language-agnostic abstractions
-│   ├── python/         # Python BaseAgent, Tools, Memory
-│   └── node/           # TypeScript/Node.js equivalents
+├── core/               # Global configurations (config.py)
 ├── projects/           # 15+ Feature-based standalone systems
-│   ├── cli-math-agent/
-│   ├── web-scout/
+│   ├── cli-quickstart-agent/
 │   └── ...
-├── practice/           # Coding challenges per concept
+├── practice/           # Hands-on learning & challenges
+│   ├── smart-calculator/
+│   ├── file-organizer/
+│   └── ...
 ├── docs/               # Conceptual deep-dives
-└── examples/           # Minimal snippets & notebooks
+└── Makefile            # Cleanup and maintenance tasks
 ```
 
 ---
@@ -62,45 +62,53 @@ We follow a **system-first approach**. Instead of learning languages, you learn 
 | :--- | :--- | :---: | :--- |
 | **CLI Quickstart** | Basic ReAct loop | 🟢 | Python |
 | **Smart Calculator** | Multi-tool calling | 🟢 | Python |
-| **File Organizer** | System tool integration | 🟡 | Node.js |
+| **File Organizer** | System tool integration | 🟡 | Python (UV) |
 | **Semantic Search** | Vector DB + Memory | 🟡 | Python |
 | **Voice Command** | STT/TTS Agents | 🟡 | Python |
-| **Web Researcher** | Browser Automation | 🟠 | Node.js |
+| **Web Researcher** | Browser Automation | 🟠 | Python |
 | **Multi-Agent Dev** | Collaborative coding | 🔴 | Python |
 | **MCP Hub** | Protocol integration | 🔴 | Python/Node |
 
 ---
 
-## Core System Design
+## Core Principles
 
-Our `core/` library provides a standardized way to build agents:
-
-1. **`BaseAgent`**: Modular engine for LLM interactions.
-2. **`Tool Registry`**: Dynamic tool discovery and validation.
-3. **`Memory Manager`**: Pluggable memory backends (Local, Redis, Vector).
-4. **`Provider Abstraction`**: Switch between OpenAI, Anthropic, or Ollama with zero code changes.
+1. **Project Isolation**: Every project is self-contained with its own engine (`agent.py`, `tools.py`).
+2. **Minimal Core**: The global `core/` folder strictly contains shared provider configurations.
+3. **Function-based**: We prioritize clean, modular functions over complex classes.
+4. **UV Powered**: We use the `uv` package manager for lightning-fast execution.
 
 ---
 
 ## Getting Started
 
-1. **Clone the repo**:
+1. **Install uv**:
    ```bash
-   git clone https://github.com/your-username/agents-gone-wild.git
-   cd agents-gone-wild
+   curl -LsSf https://astral.sh/uv/install.sh | sh
    ```
 
 2. **Setup your environment**:
    ```bash
    cp .env.example .env
-   # Add your API keys (OpenAI, Anthropic, etc.)
+   # Add your API keys (OpenAI, Anthropic, or OpenRouter)
    ```
 
 3. **Explore a project**:
    ```bash
    cd projects/cli-quickstart-agent
-   pip install -r requirements.txt
-   python main.py
+   uv run main.py
    ```
 
 ---
+
+## Cleanup and Storage Management
+
+To save disk space and clean up temporary files (like virtual environments and cache), use the provided Makefile:
+
+```bash
+# To see all available commands
+make help
+
+# To remove all .venv, pycache, and uv cache files
+make clean-all
+```
