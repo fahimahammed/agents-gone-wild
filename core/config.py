@@ -29,6 +29,18 @@ def get_llm_config(provider: str, model: str, **kwargs) -> Dict[str, Any]:
     config.update(kwargs)
     return config
 
+def get_openai_config(model: str = "gpt-4o", **kwargs):
+    return get_llm_config("openai", model, **kwargs)
+
+def get_anthropic_config(model: str = "claude-3-5-sonnet-20240620", **kwargs):
+    return get_llm_config("anthropic", model, **kwargs)
+
+def get_ollama_config(model: str = "llama3", **kwargs):
+    return get_llm_config("ollama", model, **kwargs)
+
+def get_openrouter_config(model: str = "google/gemini-2.0-flash-001", **kwargs):
+    return get_llm_config("openrouter", model, **kwargs)
+
 def get_default_config():
     """Helper to get a default reasonable config."""
-    return get_llm_config("openrouter", "google/gemini-2.0-flash-001")
+    return get_openrouter_config()

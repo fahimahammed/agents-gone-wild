@@ -6,8 +6,8 @@ from datetime import datetime
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "../../")))
 
 from core.config import get_openrouter_config
-from core.agent import run_agent_loop, create_message
-from core.tools import register_tool
+from agent import run_agent_loop, create_message
+from tools import register_tool
 
 # 1. Register Tools (Function-Based)
 @register_tool(

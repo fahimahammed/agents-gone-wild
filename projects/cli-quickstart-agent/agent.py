@@ -1,6 +1,6 @@
 import json
 from typing import List, Dict, Any, Optional
-from .tools import get_tool_schemas, execute_tool
+from tools import get_tool_schemas, execute_tool
 
 def run_agent_loop(
     messages: List[Dict[str, str]],
