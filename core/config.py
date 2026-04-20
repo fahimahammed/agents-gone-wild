@@ -38,8 +38,19 @@ def get_anthropic_config(model: str = "claude-3-5-sonnet-20240620", **kwargs):
 def get_ollama_config(model: str = "llama3", **kwargs):
     return get_llm_config("ollama", model, **kwargs)
 
-def get_openrouter_config(model: str = "google/gemini-2.0-flash-001", **kwargs):
+def get_openrouter_config(model: str = "anthropic/claude-3-haiku", **kwargs):
+    """
+    OpenRouter config with a stable default model (Claude 3 Haiku).
+    If you experience 504 errors, try stable models like:
+    - anthropic/claude-3-haiku
+    - qwen/qwen-2.5-72b-instruct
+    - openai/gpt-4o-mini
+    """
     return get_llm_config("openrouter", model, **kwargs)
+
+def get_fallback_config():
+    """Returns a config with OpenAI as a fallback if OpenRouter is down."""
+    return get_openai_config(model="gpt-4o-mini")
 
 def get_default_config():
     """Helper to get a default reasonable config."""

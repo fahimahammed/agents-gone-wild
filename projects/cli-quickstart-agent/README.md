@@ -12,20 +12,23 @@ This is the "Hello World" of agentic AI. It demonstrates a clean, **functional**
 2. **Tools**: `@register_tool` maps functions to the agent's world.
 3. **Execution**: `run_agent_loop()` handles the sequence of thoughts and tool calls.
 
-## 🚥 Setup
+## Setup
 
-1. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+1. Install uv:
+   curl -LsSf https://astral.sh/uv/install.sh | sh
 
-2. **Configure environment**:
-   Add your API keys to the `.env` file in the root.
+2. Run the agent:
+   uv run main.py
 
-3. **Run the agent**:
-   ```bash
-   python main.py
-   ```
+## Examples
+
+Example 1: Basic Greeting
+Input: Hello, who are you?
+Output: I am a CLI agent designed to help you with various tasks.
+
+Example 2: Time Check
+Input: What is the current time?
+Output: The current time is 2026-04-20 20:15:00.
 
 ## 🧪 Key Learning Outcomes
 - Understanding functional state management in agentic loops.
